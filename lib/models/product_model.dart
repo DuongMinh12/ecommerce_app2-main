@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/models/catagory_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,16 @@ class Product extends Equatable{
   @override
   // TODO: implement props
   List<Object?> get props => [name, imageUrl, price, category, isRecommended, isPopular];
+
+  static Product fromSnapshot(DocumentSnapshot snap){
+    Product product = Product(name: snap['name'],
+        imageUrl: snap['imageUrl'],
+        category: snap['category'],
+        price: snap['price'],
+        isRecommended: snap['isRecommended'],
+        isPopular: snap['isPopular']);
+    return product;
+  }
 
   static List<Product> products = const [
      Product(name: 'Smoothies Bery',
