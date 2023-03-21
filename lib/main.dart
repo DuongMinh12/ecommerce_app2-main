@@ -3,6 +3,7 @@ import 'package:ecommerce_app/bloc/category/category_bloc.dart';
 import 'package:ecommerce_app/bloc/product/product_bloc.dart';
 import 'package:ecommerce_app/repositories/category/category_repository.dart';
 import 'package:ecommerce_app/repositories/product/product_repository.dart';
+import 'package:ecommerce_app/screens/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/wish_list/wishlist_bloc.dart';
@@ -13,8 +14,8 @@ import 'package:ecommerce_app/routes.dart';
 // import 'firebase_options.dart';
 
 void main() async{
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp()
 
     //     const MaterialApp(
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_)=> WishlistBloc()..add(StarWishList())),
         BlocProvider(create: (_)=> CartBloc()..add(CartStareted())),
-        // BlocProvider(create: (_) => CategoryBloc(categoruRepository: CategoryRepository(),)..add(LoadCategory())),
-        // BlocProvider(create: (_) => ProductBloc(productRepository: ProductRepository())..add(LoadProduct())),
+        BlocProvider(create: (_) => CategoryBloc(categoruRepository: CategoryRepository(),)..add(LoadCategory())),
+        BlocProvider(create: (_) => ProductBloc(productRepository: ProductRepository())..add(LoadProduct())),
       ],
       child: MaterialApp(
         title: 'Zero To Unicorn',
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue
         ),
         onGenerateRoute: Approute.onGenerrateRoute,
-        initialRoute: FlashPage.routeName,
+        initialRoute: HomeScreen.routeName,
         debugShowCheckedModeBanner: false,
       ),
     );

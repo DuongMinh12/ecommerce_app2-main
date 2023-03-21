@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/screens/test.dart';
 import 'screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -26,8 +27,8 @@ import 'package:flutter/material.dart';
            return FlashPage.route();
          case CartPage.routeName:
            return CartPage.route();
-         case WishListPage.routeName:
-           return WishListPage.route();
+         case TestPage.routeName:
+           return TestPage.route();
          default:
            return _errorRoute();
        }
