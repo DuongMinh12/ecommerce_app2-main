@@ -9,10 +9,12 @@ import 'bloc/wish_list/wishlist_bloc.dart';
 import 'screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/routes.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'firebase_options.dart';
 
 void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(MyApp()
 
     //     const MaterialApp(
@@ -32,8 +34,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_)=> WishlistBloc()..add(StarWishList())),
         BlocProvider(create: (_)=> CartBloc()..add(CartStareted())),
-        BlocProvider(create: (_) => CategoryBloc(categoruRepository: CategoryRepository(),)..add(LoadCategory())),
-        BlocProvider(create: (_) => ProductBloc(productRepository: ProductRepository())..add(LoadProduct())),
+        // BlocProvider(create: (_) => CategoryBloc(categoruRepository: CategoryRepository(),)..add(LoadCategory())),
+        // BlocProvider(create: (_) => ProductBloc(productRepository: ProductRepository())..add(LoadProduct())),
       ],
       child: MaterialApp(
         title: 'Zero To Unicorn',

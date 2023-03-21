@@ -15,10 +15,10 @@ class Category extends Equatable {
   // TODO: implement props
   List<Object?> get props => [name, imageUrl];
 
-  static Category fromSnapshot (DocumentSnapshot snap){
-    Category category = Category(name: snap['name'], imageUrl: snap['imageUrl']);
-    return category;
-  }
+  // static Category fromSnapshot (DocumentSnapshot snap){
+  //   Category category = Category(name: snap['name'], imageUrl: snap['imageUrl']);
+  //   return category;
+  // }
 
   static List<Category> catagories =[
     Category(name: 'Soft Drink',

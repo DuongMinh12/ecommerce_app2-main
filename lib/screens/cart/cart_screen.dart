@@ -75,17 +75,11 @@ class CartPage extends StatelessWidget {
                         Container(
                           height: 310,
                           child: ListView.builder(
-                              itemCount: state.cart.ProductQuantity(state.cart.products).keys.length,
+                              itemCount:  state.cart.ProductQuantity(state.cart.products).keys.length,
                               itemBuilder: (BuildContext context, int indext) {
                                 return CardProductCard(
-                                    quantity: state.cart
-                                        .ProductQuantity(state.cart.products)
-                                        .values
-                                        .elementAt(indext),
-                                    product: state.cart
-                                        .ProductQuantity(state.cart.products)
-                                        .keys
-                                        .elementAt(indext));
+                                    //quantity: //state.cart.ProductQuantity(state.cart.products).values.elementAt(indext),
+                                    product: state.cart.ProductQuantity(state.cart.products).keys.elementAt(indext));
                               }),
                         ),
                       ],
