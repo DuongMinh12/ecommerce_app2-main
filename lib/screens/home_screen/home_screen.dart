@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
             SelectionTitle(
               title: "RECOMMENT",
             ),
-            ProductCard(product: Product.products[0],),
+            //ProductCard(product: Product.products[0],),
             BlocBuilder<ProductBloc, ProductState>(
               builder: (context, state) {
                 if (state is ProductLoading) {
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
             SelectionTitle(
               title: "MOST POPULAR",
             ),
-            ProductCard(product: Product.products[0],),
+            //ProductCard(product: Product.products[0],),
             BlocBuilder<ProductBloc, ProductState>(
               builder: (context, state) {
                 if (state is ProductLoading) {

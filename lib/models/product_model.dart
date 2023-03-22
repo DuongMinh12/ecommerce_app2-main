@@ -7,7 +7,7 @@ class Product extends Equatable {
   final String name;
   final String imageUrl;
   final String category;
-  final double price;
+  final int price;
   final bool isRecommended;
   final bool isPopular;
 
@@ -22,7 +22,7 @@ class Product extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [category, imageUrl, isPopular, isRecommended,name, price];
+  List<Object?> get props => [ name, imageUrl, category, price, isRecommended, isPopular ];//category, imageUrl, isPopular, isRecommended,name , price];
 
   static Product fromSnapshot(DocumentSnapshot snap) {
     Product product = Product(
@@ -86,6 +86,8 @@ class Product extends Equatable {
         price: 20,
         isRecommended: true,
         isPopular: true),
-    Product(name: 'Tea', imageUrl: 'https://sainthonore.com.vn/media/product/2021/05//33072_1620976904.jpg', category: 'Water', price: 15, isRecommended: true, isPopular: false),
+    Product(name: 'Tea',
+        imageUrl: 'https://sainthonore.com.vn/media/product/2021/05//33072_1620976904.jpg',
+        category: 'Water', price: 15, isRecommended: true, isPopular: false),
   ];
 }
