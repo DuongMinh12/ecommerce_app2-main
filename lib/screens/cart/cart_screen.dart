@@ -2,6 +2,7 @@ import 'package:ecommerce_app/Widget/Widget.dart';
 import 'package:ecommerce_app/bloc/cart/cart_bloc.dart';
 import 'package:ecommerce_app/constants/add_all.dart';
 import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/screens/checkout/checkout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +30,9 @@ class CartPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, CheckoutPage.routeName);
+                  },
                   child: Text(
                     'GO TO CHECKOUT',
                     style: txtfont18,
@@ -84,82 +87,7 @@ class CartPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Column(
-                      children: [
-                        Divider(
-                          thickness: 2,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'SUBTOTAL',
-                                    style: txtfont14,
-                                  ),
-                                  Text(
-                                    '\$${state.cart.subtotalSring}',
-                                    style: txtfont14,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'DELEVERY FREE',
-                                    style: txtfont14,
-                                  ),
-                                  Text(
-                                    '\$${state.cart.deliveryFreeSring}',
-                                    style: txtfont14,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Stack(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 60,
-                              decoration: BoxDecoration(color: Colors.black.withAlpha(50)),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.all(5),
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'TOTAL',
-                                      style: txtfont14!.copyWith(color: Colors.white),
-                                    ),
-                                    Text(
-                                      '\$${state.cart.totalFeeSring}',
-                                      style: txtfont14!.copyWith(color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    )
+                    OrderSummary(),
                   ],
                 ),
               );
