@@ -44,7 +44,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => WishlistBloc()..add(StarWishList())),
           BlocProvider<CartBloc>(create: (_) => CartBloc()..add(CartStareted())),
-          //BlocProvider(create: (_) => CheckoutBloc( cartBloc: CartBloc()..add(CartStareted())/*cartBloc: context.read<CartBloc>()*/, checkoutRepository: CheckoutRepository())),
+          BlocProvider(create: (_) => CheckoutBloc(
+              // cartBloc: CartBloc()..add(CartStareted())
+              cartBloc: context.read<CartBloc>(), checkoutRepository: CheckoutRepository())),
           BlocProvider(
               create: (_) => CategoryBloc(
                     categoruRepository: CategoryRepository(),
