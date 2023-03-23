@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/screens/cart/cart_screen.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomAppbar extends StatelessWidget {
@@ -24,7 +25,7 @@ class CustomBottomAppbar extends StatelessWidget {
             },
               icon: Icon(Icons.shopping_cart), color: Colors.white,),
             IconButton(onPressed: (){
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, ProductAdminPage.routeName);
             },
               icon: Icon(Icons.person), color: Colors.white,)
           ],

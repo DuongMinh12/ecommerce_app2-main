@@ -108,29 +108,29 @@ class CheckoutPage extends StatelessWidget {
               style: txtfont16,
             ),
             _buildTextFormField(
-              (value) {context.read<CheckoutBloc>().add(UpdateCheckout(email: value));}, context, 'Email :'
-              //   emaiController ,context, 'Email :'
+              //(value) {context.read<CheckoutBloc>().add(UpdateCheckout(email: value));}, context, 'Email :'
+                 emaiController ,context, 'Email :'
             ),
             _buildTextFormField(
-              (value) {context.read<CheckoutBloc>().add(UpdateCheckout(name: value));}, context, 'Full Name :'
-              //   nameController, context, 'Name :'
+              //(value) {context.read<CheckoutBloc>().add(UpdateCheckout(name: value));}, context, 'Full Name :'
+                 nameController, context, 'Name :'
             ),
             Text('DELIVERY INFORMATION', style: txtfont16),
             _buildTextFormField(
-                    (value) {context.read<CheckoutBloc>().add(UpdateCheckout(address: value));}, context, 'Address :'
-                // addressController, context, 'Address :'
+                    //(value) {context.read<CheckoutBloc>().add(UpdateCheckout(address: value));}, context, 'Address :'
+                 addressController, context, 'Address :'
             ),
             _buildTextFormField(
-              (value) {context.read<CheckoutBloc>().add(UpdateCheckout(city: value));}, context, 'City :'
-                // cityController, context, 'City :'
+             // (value) {context.read<CheckoutBloc>().add(UpdateCheckout(city: value));}, context, 'City :'
+                cityController, context, 'City :'
             ),
             _buildTextFormField(
-              (value) {context.read<CheckoutBloc>().add(UpdateCheckout(country: value));}, context, 'Country :'
-                // countryController, context, 'Country :'
+              //(value) {context.read<CheckoutBloc>().add(UpdateCheckout(country: value));}, context, 'Country :'
+                 countryController, context, 'Country :'
             ),
             _buildTextFormField(
-              (value) {context.read<CheckoutBloc>().add(UpdateCheckout(zipcode: value));}, context, 'Zip Code :'
-                // zipCodeController, context, 'Zip Code :'
+              //(value) {context.read<CheckoutBloc>().add(UpdateCheckout(zipcode: value));}, context, 'Zip Code :'
+                 zipCodeController, context, 'Zip Code :'
             ),
             Text('ORDER SUMMARY', style: txtfont16),
             OrderSummary(),
@@ -142,8 +142,8 @@ class CheckoutPage extends StatelessWidget {
 }
 
  Padding _buildTextFormField(
-  Function(String)? onChanged,
-  // TextEditingController controller,
+  // Function(String)? onChanged,
+     TextEditingController controller,
   BuildContext context,
   String labelText,
 ) {
@@ -160,8 +160,8 @@ class CheckoutPage extends StatelessWidget {
           ),
           Expanded(
             child: TextFormField(
-              // controller: controller,
-              onChanged: onChanged,
+               controller: controller,
+              //onChanged: onChanged,
               decoration: InputDecoration(isDense: true, contentPadding: EdgeInsets.only(left: 10), focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black))),
             ),
           )

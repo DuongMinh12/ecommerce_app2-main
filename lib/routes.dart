@@ -29,6 +29,12 @@ import 'package:flutter/material.dart';
            return CartPage.route();
          case CheckoutPage.routeName:
            return CheckoutPage.route();
+         case ProductAdminPage.routeName:
+           return ProductAdminPage.route();
+         case WishListPage.routeName:
+           return WishListPage.route();
+         case AddNewProductage.routeName:
+           return AddNewProductage.route();
          default:
            return _errorRoute();
        }
