@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/Widget/Widget.dart';
 import 'package:ecommerce_app/Widget/custom_appbar.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/checkout/checkout_bloc.dart';
@@ -39,7 +40,7 @@ class CheckoutPage extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, CheckoutPage.routeName);
+                  Navigator.pushNamed(context, OrderPage.routeName);
                 },
                 child: Text(
                   'GO TO CHECKOUT',

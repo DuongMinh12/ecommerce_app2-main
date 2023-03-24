@@ -7,7 +7,7 @@ import '../models/models.dart';
 import '../screens/screens.dart';
 
 class ProductCardAdmin extends StatelessWidget {
-  final ProductAdmin productad;
+  final Product productad;
   final int indext;
   final ProductController productController = Get.find();
    ProductCardAdmin({
@@ -34,22 +34,28 @@ class ProductCardAdmin extends StatelessWidget {
                       margin: EdgeInsets.only(top: 10, right: 8),
                       child: Image.network(productad.imageUrl, fit: BoxFit.cover,)),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Price:', style: txtfont16,),
-                          Container(
-                            width: 165,
-                            margin: EdgeInsets.only(right: 10),
-                            child: Slider(value: productad.price, onChanged: (value){
+                          SizedBox(
+                            width: 45,
+                              child: Text('Price:', style: txtfont16,)),
+                          SizedBox(
+                            width: 150,
+                            // margin: EdgeInsets.only(right: 10),
+                            child: Slider(value: productad.price.toDouble(), onChanged: (value){
                               productController.updateProductPrice(indext, productad, value);
                             },
                               min: 0,
                               max: 100,
                               activeColor: Colors.black,
                               inactiveColor: Colors.black.withAlpha(30),
-                              divisions: 10,),
+                              divisions: 10,
+                            onChangeEnd: (value){
+                              productController.saveNewProductPrice('price', productad, value.toInt());
+                            },),
                           ),
                           Text(
                             '\$${productad.price}', style: txtfont12,),
@@ -57,9 +63,11 @@ class ProductCardAdmin extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text('Qty:', style: txtfont16,),
-                          Container(
-                            width: 165,
+                          SizedBox(
+                            width: 45,
+                              child: Text('Qty:', style: txtfont16,)),
+                          SizedBox(
+                            width: 150,
                             child: Slider(value: productad.quantity.toDouble(), onChanged: (value){
                               productController.updateProductQuantity(indext, productad, value.toInt());
                             },
@@ -67,7 +75,10 @@ class ProductCardAdmin extends StatelessWidget {
                               max: 100,
                               activeColor: Colors.black,
                               inactiveColor: Colors.black.withAlpha(30),
-                              divisions: 10,),
+                              divisions: 10,
+                            onChangeEnd: (value){
+                              productController.saveNewProductQuantity('quantity', productad, value.toInt());
+                            },),
                           ),
                           Text(
                             '${productad.quantity}', style: txtfont12,),

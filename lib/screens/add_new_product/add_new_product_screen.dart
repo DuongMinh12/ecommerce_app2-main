@@ -1,4 +1,7 @@
 import 'package:ecommerce_app/controllers/product_controller.dart';
+import 'package:ecommerce_app/models/models.dart';
+import 'package:ecommerce_app/repositories/services/database_service.dart';
+import 'package:ecommerce_app/repositories/services/storage_service.dart';
 import 'package:ecommerce_app/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +13,8 @@ class AddNewProductage extends StatelessWidget {
   AddNewProductage({Key? key}) : super(key: key);
 
   final ProductController productController = Get.put(ProductController());
+  StorageService storage = StorageService();
+  DatabaseService database = DatabaseService();
 
   static const String routeName = 'addNewProductage';
   static Route route() {
@@ -21,6 +26,10 @@ class AddNewProductage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text('Add new product', style: titletxtStyle,),
+      ),
       body: Obx(
         ()=> Column(
           children: [
@@ -39,9 +48,16 @@ class AddNewProductage extends StatelessWidget {
                           final XFile? _image = await _imagePicker.pickImage(source: ImageSource.gallery);
                           if(_image == null){
                             ScaffoldMessenger.of(context).showSnackBar((const SnackBar(content: Text(('No Image was selected')),)),);
+                            // var imageset = 'https://askanswerswiki.com/wp-content/uploads/2022/01/uong-coca-co-beo-khong-1.jpg';
+                            // productController.newProduct.update('imageUrl', (_) => imageset, ifAbsent: ()=> imageset);
+                            // print(productController.newProduct['imageUrl']);
                           }
-
                           if(_image != null){
+                            await storage.uploadImage(_image);
+                            var imageUrl = await storage.getDownloadUrl(_image.name);
+
+                            productController.newProduct.update('imageUrl', (_) => imageUrl, ifAbsent: ()=> imageUrl);
+                            print(productController.newProduct['imageUrl']);
                           }
                         }, icon: Icon(Icons.add_circle, color: Colors.white,),
                       ),
@@ -98,6 +114,17 @@ class AddNewProductage extends StatelessWidget {
                   Center(
                     child: ElevatedButton(
                       onPressed: (){
+                        database.addProduct(Product(
+                            id: int.parse(productController.newProduct['id']),
+                            name: productController.newProduct['name'],
+                            imageUrl: productController.newProduct['imageUrl'],
+                            category: productController.newProduct['category'],
+                            isRecommended: productController.newProduct['isRecommended'],
+                            isPopular: productController.newProduct['isPopular'],
+                            desciption: productController.newProduct['desciption'],
+                            price: productController.newProduct['price'],
+                            quantity: productController.newProduct['quantity'].toInt(),
+                        ));
                         print(productController.newProduct);
                       },
                       style: ElevatedButton.styleFrom(

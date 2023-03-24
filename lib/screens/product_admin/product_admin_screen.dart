@@ -47,13 +47,13 @@ class ProductAdminPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
+            child: Obx( ()=> ListView.builder(
               itemCount: productController.productsAdmin.length,
                 itemBuilder: (BuildContext context, int index){
-                return  Obx( ()=> ProductCardAdmin(productad: productController.productsAdmin[index],
-                  indext: index,),
-                );
+                return  ProductCardAdmin(productad: productController.productsAdmin[index],
+                  indext: index,);
                 }),
+            )
           ),
         ],
       ),

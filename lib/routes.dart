@@ -35,6 +35,8 @@ import 'package:flutter/material.dart';
            return WishListPage.route();
          case AddNewProductage.routeName:
            return AddNewProductage.route();
+         case OrderPage.routeName:
+           return OrderPage.route();
          default:
            return _errorRoute();
        }

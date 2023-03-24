@@ -7,3 +7,4 @@ export 'product_carousel.dart';
 export 'card_product_card.dart';
 export 'order_summary.dart';
 export 'order_now_button.dart';
+export 'order_cart.dart';

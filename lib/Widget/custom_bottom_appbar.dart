@@ -17,7 +17,7 @@ class CustomBottomAppbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(onPressed: (){
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, HomeScreen.routeName);
             },
               icon: Icon(Icons.home), color: Colors.white,),
             IconButton(onPressed: (){
